@@ -1,5 +1,5 @@
 import Tabuleiro from './components/Tabuleiro';
-//import './App.css'
+import './App.css'
 
 function App() {
 
