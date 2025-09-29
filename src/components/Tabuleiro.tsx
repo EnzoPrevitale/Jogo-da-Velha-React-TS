@@ -22,7 +22,8 @@ export default function Tabuleiro() {
         setXProximo(!xProximo);
     }
 
-    const venceu = vencedor(quadrados);
+    const ganhador: boolean[] = Array(9).fill(false);
+    const venceu: string | null = vencedor(quadrados, ganhador);
     const velha: boolean = fim(quadrados);
 
     let status = "Próximo: " + (xProximo ? "X" : "O");
@@ -36,25 +37,25 @@ export default function Tabuleiro() {
     <div className={styles.tabuleiro}>
         <h1 className={styles.status}>{status}</h1>
         <div className={styles.linha}>
-            <Quadrado value={quadrados[0]} onClick={() => handleClick(0)} />
-            <Quadrado value={quadrados[1]} onClick={() => handleClick(1)} />
-            <Quadrado value={quadrados[2]} onClick={() => handleClick(2)} />
+            <Quadrado value={quadrados[0]} onClick={() => handleClick(0)} vencedor={ganhador[0]} />
+            <Quadrado value={quadrados[1]} onClick={() => handleClick(1)} vencedor={ganhador[1]} />
+            <Quadrado value={quadrados[2]} onClick={() => handleClick(2)} vencedor={ganhador[2]} />
         </div>
         <div className={styles.linha}>
-            <Quadrado value={quadrados[3]} onClick={() => handleClick(3)} />
-            <Quadrado value={quadrados[4]} onClick={() => handleClick(4)} />
-            <Quadrado value={quadrados[5]} onClick={() => handleClick(5)} />
+            <Quadrado value={quadrados[3]} onClick={() => handleClick(3)} vencedor={ganhador[3]} />
+            <Quadrado value={quadrados[4]} onClick={() => handleClick(4)} vencedor={ganhador[4]} />
+            <Quadrado value={quadrados[5]} onClick={() => handleClick(5)} vencedor={ganhador[5]} />
         </div>
         <div className={styles.linha}>
-            <Quadrado value={quadrados[6]} onClick={() => handleClick(6)} />
-            <Quadrado value={quadrados[7]} onClick={() => handleClick(7)} />
-            <Quadrado value={quadrados[8]} onClick={() => handleClick(8)} />
+            <Quadrado value={quadrados[6]} onClick={() => handleClick(6)} vencedor={ganhador[6]} />
+            <Quadrado value={quadrados[7]} onClick={() => handleClick(7)} vencedor={ganhador[7]} />
+            <Quadrado value={quadrados[8]} onClick={() => handleClick(8)} vencedor={ganhador[8]} />
         </div>
     </div>
     );
 }
 
-function vencedor(quadrados: Array<string | null>): string | null {
+function vencedor(quadrados: Array<string | null>, ganhador: boolean[]): string | null {
     const linhas: Array<Array<number>> = [
         [0, 1, 2],
         [3, 4, 5],
@@ -69,9 +70,7 @@ function vencedor(quadrados: Array<string | null>): string | null {
     for(let i = 0; i < linhas.length; i++) {
         const [ a, b, c ] = linhas[i];
         if(quadrados[a] && quadrados[a] === quadrados[b] && quadrados[a] === quadrados[c]) {
-            for(let j = 0; j < linhas[i].length; j++) {
-                linhas[i][j]
-            }
+            ganhador[a] = ganhador[b] = ganhador[c] = true;
             return quadrados[a];
         }
     }

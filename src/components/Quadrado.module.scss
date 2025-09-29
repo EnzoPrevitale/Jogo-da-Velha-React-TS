@@ -5,4 +5,12 @@
     border-radius: 25%;
     font-size: 3rem;
     background-color: azure;
+    cursor: pointer;
+    transition: background-color 0.5s;
+    transition: color 0.5s;
+}
+
+.vencedor{
+    color: white;
+    background-color: blue;
 }
