@@ -35,7 +35,6 @@ export default function Tabuleiro() {
 
     return (
     <div className={styles.tabuleiro}>
-        <h1 className={styles.status}>{status}</h1>
         <div className={styles.linha}>
             <Quadrado value={quadrados[0]} onClick={() => handleClick(0)} vencedor={ganhador[0]} />
             <Quadrado value={quadrados[1]} onClick={() => handleClick(1)} vencedor={ganhador[1]} />
@@ -51,6 +50,7 @@ export default function Tabuleiro() {
             <Quadrado value={quadrados[7]} onClick={() => handleClick(7)} vencedor={ganhador[7]} />
             <Quadrado value={quadrados[8]} onClick={() => handleClick(8)} vencedor={ganhador[8]} />
         </div>
+        <h1 className={styles.status}>{status}</h1>
     </div>
     );
 }
