@@ -8,9 +8,17 @@
     cursor: pointer;
     transition: background-color 0.5s;
     transition: color 0.5s;
+
+    &:hover {
+        background-color: rgb(212, 255, 255);
+    }
 }
 
-.vencedor{
+.vencedor {
     color: white;
     background-color: blue;
+
+    &:hover {
+        background-color: blue;
+    }
 }

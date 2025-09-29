@@ -35,6 +35,7 @@ export default function Tabuleiro() {
 
     return (
     <div className={styles.tabuleiro}>
+        <h1 className={styles.titulo}>Jogo da Velha</h1>
         <div className={styles.linha}>
             <Quadrado value={quadrados[0]} onClick={() => handleClick(0)} vencedor={ganhador[0]} />
             <Quadrado value={quadrados[1]} onClick={() => handleClick(1)} vencedor={ganhador[1]} />
